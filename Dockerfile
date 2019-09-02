@@ -7,8 +7,8 @@ ENV OC_VERSION "v3.9.0"
 ENV OC_RELEASE "openshift-origin-client-tools-v3.9.0-191fece-linux-64bit"
 
 # Update
-RUN apt-get update && \
-  apt-get install software-properties-common
+RUN apt-get update -y && \
+  apt-get install -y software-properties-common
 
 # Install Client Tools
 ADD https://github.com/openshift/origin/releases/download/$OC_VERSION/$OC_RELEASE.tar.gz /opt/oc/release.tar.gz
