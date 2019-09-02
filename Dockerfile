@@ -6,6 +6,10 @@ LABEL description="Based on Ubuntu with a little more tools like yq to process y
 ENV OC_VERSION "v3.9.0"
 ENV OC_RELEASE "openshift-origin-client-tools-v3.9.0-191fece-linux-64bit"
 
+# Update
+RUN apt-get update && \
+  apt-get install software-properties-common
+
 # Install Client Tools
 ADD https://github.com/openshift/origin/releases/download/$OC_VERSION/$OC_RELEASE.tar.gz /opt/oc/release.tar.gz
 RUN tar --strip-components=1 -xzvf  /opt/oc/release.tar.gz -C /opt/oc/ && \
