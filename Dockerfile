@@ -6,10 +6,11 @@ LABEL description="Based on Ubuntu with a little more tools like yq to process y
 ENV OC_VERSION "v3.9.0"
 ENV OC_RELEASE "openshift-origin-client-tools-v3.9.0-191fece-linux-64bit"
 
-ENV KUBECONFIG "/home/rm-os/.kube/config"
+ENV KUBEFOLDER "/home/rm-os/.kube"
+ENV KUBECONFIG "$KUBEFOLDER/config"
 
 # Set Permissions to Kubeconfig
-RUN mkdir -p $KUBECONFIG && \
+RUN mkdir -p $KUBEFOLDER && \
   chgrp root $KUBECONFIG && \
   chmod 660 $KUBECONFIG
 
