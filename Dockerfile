@@ -11,8 +11,8 @@ ENV KUBECONFIG "$KUBEFOLDER/config"
 
 # Set Permissions to Kubeconfig
 RUN mkdir -p $KUBEFOLDER && \
-  chgrp root $KUBECONFIG && \
-  chmod 660 $KUBECONFIG
+  chgrp root $KUBEFOLDER && \
+  chmod 660 $KUBEFOLDER
 
 # Update
 RUN apt-get update -y && \
