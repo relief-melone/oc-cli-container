@@ -12,7 +12,7 @@ ENV KUBECONFIG "$KUBEFOLDER/config"
 # Set Permissions to Kubeconfig
 RUN mkdir -p $KUBEFOLDER && \
   chgrp root $KUBEFOLDER && \
-  chmod 660 $KUBEFOLDER
+  chmod 770 $KUBEFOLDER
 
 # Update
 RUN apt-get update -y && \
@@ -28,6 +28,3 @@ RUN tar --strip-components=1 -xzvf  /opt/oc/release.tar.gz -C /opt/oc/ && \
 RUN add-apt-repository ppa:rmescandon/yq && \
   apt update && \
   apt install yq -y
-
-EXPOSE 8001
-
