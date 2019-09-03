@@ -6,6 +6,12 @@ LABEL description="Based on Ubuntu with a little more tools like yq to process y
 ENV OC_VERSION "v3.9.0"
 ENV OC_RELEASE "openshift-origin-client-tools-v3.9.0-191fece-linux-64bit"
 
+ENV KUBECONFIG "/home/rm-os/.kube/config"
+
+# Set Permissions to Kubeconfig
+RUN chgrp root $KUBECONFIG && \
+  chmod 660 $KUBECONFIG
+
 # Update
 RUN apt-get update -y && \
   apt-get install -y software-properties-common
