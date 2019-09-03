@@ -9,7 +9,8 @@ ENV OC_RELEASE "openshift-origin-client-tools-v3.9.0-191fece-linux-64bit"
 ENV KUBECONFIG "/home/rm-os/.kube/config"
 
 # Set Permissions to Kubeconfig
-RUN chgrp root $KUBECONFIG && \
+RUN mkdir -p $KUBECONFIG && \
+  chgrp root $KUBECONFIG && \
   chmod 660 $KUBECONFIG
 
 # Update
