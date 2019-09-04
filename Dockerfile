@@ -6,6 +6,14 @@ LABEL description="Based on Ubuntu with a little more tools like yq to process y
 ENV OC_VERSION "v3.9.0"
 ENV OC_RELEASE "openshift-origin-client-tools-v3.9.0-191fece-linux-64bit"
 
+ENV KUBEFOLDER "/home/rm-os/.kube"
+ENV KUBECONFIG "$KUBEFOLDER/config"
+
+# Set Permissions to Kubeconfig
+RUN mkdir -p $KUBEFOLDER && \
+  chgrp root $KUBEFOLDER && \
+  chmod 770 $KUBEFOLDER
+
 # Update
 RUN apt-get update -y && \
   apt-get install -y software-properties-common
@@ -20,6 +28,3 @@ RUN tar --strip-components=1 -xzvf  /opt/oc/release.tar.gz -C /opt/oc/ && \
 RUN add-apt-repository ppa:rmescandon/yq && \
   apt update && \
   apt install yq -y
-
-EXPOSE 8001
-
